@@ -7,7 +7,7 @@ express()
   // .set('views', path.join(__dirname, 'views'))
   // .set('view engine', 'ejs')
   // .get('/', (req, res) => res.render('pages/index'))
-  .post('/lmgtfy', (_request, response) => {
+  .post('/lmgtfy', (request, response) => {
     content = {
       "response_type": "in_channel",
       "blocks": [
@@ -15,14 +15,14 @@ express()
           "type": "section",
           "text": {
             "type": "mrkdwn",
-            "text": "*Let Me Google That For You*"
+            "text": "*Let Me Google That For You!*"
           }
         },
         {
           "type": "section",
           "text": {
             "type": "mrkdwn",
-            "text": "[Here's A Link](https://google.com)"
+            "text": `[${request.params.text}](https://google.com)`
           }
         }]
       }
