@@ -16,10 +16,7 @@ express()
     message = `*I can help you google that, ${request.body.user_name}!*\n<${encodeURI(link)}>`
     content = {
       "response_type": "in_channel",
-      "text": {
-        "type": "mrkdwn",
-        "text": message
-      }
+      "text": message
     }
     response.send(content)
   })
