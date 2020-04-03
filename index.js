@@ -13,7 +13,7 @@ express()
   .use(bodyParser.urlencoded({ extended: true }))
   .post('/lmgtfy', (request, response) => {
     link = `https://lmgtfy.com/?q=${request.body.text}`
-    message = `*I can help you google that, <${request.body.user_id}>!*\n<${encodeURI(link)}>`
+    message = `*I can help you google that, <@${request.body.user_id}>!*\n<${encodeURI(link)}>`
     content = {
       "response_type": "in_channel",
       "text": message
