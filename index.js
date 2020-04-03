@@ -1,5 +1,7 @@
 const express = require('express')
 const path = require('path')
+const bodyParser = require('body-parser');
+
 const PORT = process.env.PORT || 5000
 
 express()
@@ -7,26 +9,18 @@ express()
   // .set('views', path.join(__dirname, 'views'))
   // .set('view engine', 'ejs')
   // .get('/', (req, res) => res.render('pages/index'))
+  .use(bodyParser.json())
+  .use(bodyParser.urlencoded({ extended: true }))
   .post('/lmgtfy', (request, response) => {
+    link = `https://lmgtfy.com/?q=${request.body.text}`
+    message = `*I can help you google that, ${request.body.user_name}!*\n<${encodeURI(link)}>`
     content = {
       "response_type": "in_channel",
-      "blocks": [
-        {
-          "type": "section",
-          "text": {
-            "type": "mrkdwn",
-            "text": "*Let Me Google That For You!*"
-          }
-        },
-        {
-          "type": "section",
-          "text": {
-            "type": "mrkdwn",
-            "text": `[${request.params.text}](https://google.com)`
-          }
-        }]
+      "text": {
+        "type": "mrkdwn",
+        "text": message
       }
-      response.send(content)
     }
-  )
+    response.send(content)
+  })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
