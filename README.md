@@ -9,8 +9,8 @@ This application supports the [Getting Started on Heroku with Node.js](https://d
 Make sure you have [Node.js](http://nodejs.org/) and the [Heroku CLI](https://cli.heroku.com/) installed.
 
 ```sh
-$ git clone https://github.com/heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
+$ git clone https://github.com/StatesTitle/SlackBot-LetMeGoogleThatForYou.git
+$ cd SlackBot-LetMeGoogleThatForYou
 $ npm install
 $ npm start
 ```
@@ -27,6 +27,11 @@ $ heroku open
 or
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+## Slack
+1. Create a slack app
+2. Add a slash command `/lmgtfy` that points to `<your heroku url>/lmgtfy`
+3. Add bot to workspace
 
 ## Documentation
 
